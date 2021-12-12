@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -57,9 +58,18 @@
                   <li><a href="#">English</a></li>
                 </ul>
               </div>
-              <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-              </div>
+              <?php 
+                if(isset($_SESSION["username"])) {
+                  echo '<div class="header__top__right__auth">
+                          <a href="php/user/logout.php"> Logout - '.$_SESSION["username"].'</a>
+                        </div>'; 
+                }
+                else{
+                  echo '<div class="header__top__right__auth">
+                          <a href="pages/login.html"><i class="fa fa-user"></i> Login - Signup</a>
+                        </div>'; 
+                }
+              ?>
             </div>
           </div>
         </div>
@@ -69,7 +79,7 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="header__logo">
-            <a href="./index.html"><img
+            <a href="./index.php"><img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAAyCAMAAABRcrRnAAAAulBMVEUAAAAXFxefzyAhISGArzifzyAkJCQhISGWwiGArzWfzyUjIyOAqzifzyQkJCSGsjJ+rjeArDkkJCR+rDiArTiizyUkJCQlJSWizySDsTWezCQlJSV+rTihzySBsDUkJCR+rDmhzyM7RSgkJCR/rTigzyV+rDihzyUkJCR/rDl+rDmhzyR+rTihzyQkJCQ5RCh/rDl+rTihziUkJCR/rTigzyV+rTmhziSgzyR+rDigziQlJSV/rTmhzyXGaKLmAAAAO3RSTlMACxAXICAjLi4wMDtAQEdMT1BUX2BgYm9weXl9gICIjZCQk52fn6Cgr6+wsMDAxM7P0NDc39/g4O/w8Hi0izgAAAMpSURBVFjD7ZZrV9MwGMcbIq1aNqRKilYsMzoqbPUSFKTt9/9a5n5tCi88ebXnnO20SZpf8s9zSZZpO3nzIrPseJOlsbNx/PFWv60eptdpuCcjtbszsdmv0zRdJ+SO4xf6ePlAsdNDGu5HwR2/ZdeTsFUS7g1l/mXgT4+Se5GEy5h3fxj4A2Xu6e8yCZeLzDY9vqfM22RcvtUb9r/dT7f3lHuehLvlG2b/u/3jJTvf41R5g9oV525+U+x9ooTFhd7S/6vNZkomc5a9YtzdbhxPLxj2V5bK3jHu1bg759ijZNzsjIp88vMlw16nwpYNHqh9/1wcrS5WLrWsMWGdHUYlsDu6gVtpNYmW2jQg9o7N41BYoxEZtPWFAwV2n5pBWC7bmoA75M/hwm5wzJ6n6N0+m1vLNhJyu2dwczIMMfDa77K5ekllwB3Qk1zQDYHVARZT87hcZuIJpMYT+BS3kcqwRUN1mKITyjcsNwTKuvFkbj2hA2Fi3MKVVoouBmLRt54PAT6y8EYYzcplbuP5QWkcsljE8oG9WFvrcvmKCFjkDn5QYe0XYkltJOIb4QgVHwQcbm2deoRbeNtVvoSVkFYozsmcQVcTsejKECJc5OcXmQ2Ieugj2LVyqN4RRYqF9acRroj9KgtCX0mBPXcZ5KhWSVk7Qkturg8rwsVBztRcZCWAgAu0vLkjtPoGqTP6z9y12SWxw1V/08vWCLcNQ8XlNvNcK3yE20OPW8gDXPQrZGGhcif7fBGz3nCh5Ral7SJmuloEcYS7jsRRq8sc8CKbP1ZBSu98LuD6txEu9OulnL3S8YvmuDO1BHpcqQOO5KvOK2+l2WXjVhaLC0OsFNpeausVCYe7nq0LjXWf6GDArWe4XcCFZIGrJMOiDjrVU5ZIgqB1LTEVv1DWG6Gdo6mWuOF1Q8cV0DeKHuPexFHuFYzaJFvXJfACV5W7EDu/ppnkamVyl5svcf3ZiZVFIPaxRDs69G9aecCVqNg9FjT2pQ66dce5UBIElMt3fi3mQntceVKx+3MGqrbnx1jBoOLlSJwtvbYXFgX5dw8utN9VLHMPdrCDHeyZ9g8GzoR0dW19NwAAAABJRU5ErkJggg=="
                 alt="" data-pagespeed-url-hash="3970492880"
                 onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
@@ -78,29 +88,42 @@
         <div class="col-lg-6">
           <nav class="header__menu">
             <ul>
-              <li class="active"><a href="./index.html">Home</a></li>
-              <li><a href="./pages/shop-grid.html">Shop</a></li>
+              <li class="active"><a href="./index.php">Home</a></li>
+              <li><a href="#">Shop</a></li>
               <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                  <li><a href="./pages/shop-details.html">Shop Details</a></li>
-                  <li><a href="./pages/shoping-cart.html">Shoping Cart</a></li>
-                  <li><a href="./pages/checkout.html">Check Out</a></li>
-                  <li><a href="./pages/blog-details.html">Blog Details</a></li>
+                  <li><a href="#">Shop Details</a></li>
+                  <li><a href="#">Shoping Cart</a></li>
+                  <li><a href="#">Check Out</a></li>
+                  <li><a href="#">Blog Details</a></li>
                 </ul>
               </li>
-              <li><a href="./pages/blog.html">Blog</a></li>
               <li><a href="./pages/contact.html">Contact</a></li>
             </ul>
           </nav>
         </div>
         <div class="col-lg-3">
-          <div class="header__cart">
-            <ul>
-              <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-              <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-          </div>
+        <?php 
+            $total_items = 0;
+            $total_price = 0;
+            if(!empty($_SESSION["cart"])) {
+              include 'php/db.php';
+              $whereIn = implode(',', $_SESSION["cart"]);
+              $query = "SELECT * FROM product WHERE id IN ($whereIn)";
+              $result = mysqli_query($connect, $query);
+              while($row = mysqli_fetch_array($result)){
+                $total_items++;
+                $total_price += $row["price"];
+              }
+              echo '<div class="header__cart">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                      <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>'.$total_items.'</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">sub total: <span>₹'.$total_price.'</span></div>
+                  </div>';
+            }
+        ?>
         </div>
       </div>
       <div class="humberger__open">
@@ -187,23 +210,135 @@
       </div>
       
       <div class="row featured__filter">
+      <?php 
+        include 'php/db.php';
 
-        <div class="col-lg-3 col-md-4 col-sm-6 mix baby fresh-meat">
-          <div class="featured__item">
-            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-              <ul class="featured__item__pic__hover">
-                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
+        $query1 = "SELECT * FROM product WHERE category = 'baby'";
+        $result1 = mysqli_query($connect, $query1);
+        while($row = mysqli_fetch_array($result1)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
             </div>
-            <div class="featured__item__text">
-              <h6><a href="#">Baby</a></h6>
-              <h5>$30.00</h5>
-            </div>
-          </div>
-        </div>
+          </div>';
+        }
 
+        $query2 = "SELECT * FROM product WHERE category = 'beauty'";
+        $result2 = mysqli_query($connect, $query2);
+        while($row = mysqli_fetch_array($result2)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
+            </div>
+          </div>';
+        }
+
+        $query3 = "SELECT * FROM product WHERE category = 'hair'";
+        $result3 = mysqli_query($connect, $query3);
+        while($row = mysqli_fetch_array($result3)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
+            </div>
+          </div>';
+        }
+
+        $query4 = "SELECT * FROM product WHERE category = 'face'";
+        $result4 = mysqli_query($connect, $query4);
+        while($row = mysqli_fetch_array($result4)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
+            </div>
+          </div>';
+        }
+
+        $query = "SELECT * FROM product WHERE category = 'body'";
+        $result = mysqli_query($connect, $query);
+        while($row = mysqli_fetch_array($result)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
+            </div>
+          </div>';
+        }
+
+        $query = "SELECT * FROM product WHERE category = 'giftpacks'";
+        $result = mysqli_query($connect, $query);
+        while($row = mysqli_fetch_array($result)){
+          echo '
+            <div class="col-lg-3 col-md-4 col-sm-6 mix '.$row["category"].' fresh-meat">
+            <div class="featured__item">
+              <div class="featured__item__pic set-bg" data-setbg="uploads/'.$row["image"].'">
+                <ul class="featured__item__pic__hover">
+                  <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                  <li><a href="php/user/cart.php/?id='.$row["id"].'"><i class="fa fa-shopping-cart"></i></a></li>
+                </ul>
+              </div>
+              <div class="featured__item__text">
+                <h6><a href="#">'.$row["title"].'</a></h6>
+                <h5>₹'.$row["price"].'</h5>
+              </div>
+            </div>
+          </div>';
+        }
+      ?>
       </div>
     </div>
   </section>
@@ -229,7 +364,7 @@
   </div>
 
 
-  <section class="latest-product spad">
+  <!-- <section class="latest-product spad">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">
@@ -238,242 +373,31 @@
             <div class="latest-product__slider owl-carousel">
               <div class="latest-prdouct__slider__item">
 
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-1.jpg.pagespeed.ic.LGjna46RhG.jpg" alt=""
-                      data-pagespeed-url-hash="195239175"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
+              <?php
+                $query = "SELECT * FROM product ORDER BY id DESC LIMIT 4";
+                $result = mysqli_query($connect, $query);
+                while($row = mysqli_fetch_array($result)){
+                  echo '<a href="#" class="latest-product__item">
+                        <div class="latest-product__item__pic">
+                          <img src="uploads/'.$row["image"].'" alt=""
+                            data-pagespeed-url-hash="195239175"
+                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        </div>
+                        <div class="latest-product__item__text">
+                          <h6>'.$row["title"].'</h6>
+                          <span>₹'.$row["price"].'</span>
+                        </div>
+                      </a>';
+                }
+              ?>
 
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="latest-product__text">
-            <h4>Top Rated Products</h4>
-            <div class="latest-product__slider owl-carousel">
-              <div class="latest-prdouct__slider__item">
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-1.jpg.pagespeed.ic.LGjna46RhG.jpg" alt=""
-                      data-pagespeed-url-hash="195239175"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-2.jpg.pagespeed.ic.A6ypl4JLGO.jpg" alt=""
-                      data-pagespeed-url-hash="489739096"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-3.jpg.pagespeed.ic.mf_XcdZ7zd.jpg" alt=""
-                      data-pagespeed-url-hash="784239017"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-              </div>
-              <div class="latest-prdouct__slider__item">
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-1.jpg.pagespeed.ic.LGjna46RhG.jpg" alt=""
-                      data-pagespeed-url-hash="195239175"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-2.jpg.pagespeed.ic.A6ypl4JLGO.jpg" alt=""
-                      data-pagespeed-url-hash="489739096"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-3.jpg.pagespeed.ic.mf_XcdZ7zd.jpg" alt=""
-                      data-pagespeed-url-hash="784239017"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="latest-product__text">
-            <h4>Review Products</h4>
-            <div class="latest-product__slider owl-carousel">
-              <div class="latest-prdouct__slider__item">
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-1.jpg.pagespeed.ic.LGjna46RhG.jpg" alt=""
-                      data-pagespeed-url-hash="195239175"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-2.jpg.pagespeed.ic.A6ypl4JLGO.jpg" alt=""
-                      data-pagespeed-url-hash="489739096"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-3.jpg.pagespeed.ic.mf_XcdZ7zd.jpg" alt=""
-                      data-pagespeed-url-hash="784239017"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-              </div>
-              <div class="latest-prdouct__slider__item">
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-1.jpg.pagespeed.ic.LGjna46RhG.jpg" alt=""
-                      data-pagespeed-url-hash="195239175"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-2.jpg.pagespeed.ic.A6ypl4JLGO.jpg" alt=""
-                      data-pagespeed-url-hash="489739096"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
-                <a href="#" class="latest-product__item">
-                  <div class="latest-product__item__pic">
-                    <img src="img/latest-product/xlp-3.jpg.pagespeed.ic.mf_XcdZ7zd.jpg" alt=""
-                      data-pagespeed-url-hash="784239017"
-                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                  </div>
-                  <div class="latest-product__item__text">
-                    <h6>Crab Pool Security</h6>
-                    <span>$30.00</span>
-                  </div>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <section class="from-blog spad">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-title from-blog__title">
-            <h2>From The Blog</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <div class="blog__item">
-            <div class="blog__item__pic">
-              <img src="img/blog/xblog-1.jpg.pagespeed.ic.LxmSdcElIm.jpg" alt="" data-pagespeed-url-hash="121501076"
-                onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-            </div>
-            <div class="blog__item__text">
-              <ul>
-                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                <li><i class="fa fa-comment-o"></i> 5</li>
-              </ul>
-              <h5><a href="#">Cooking tips make cooking simple</a></h5>
-              <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <div class="blog__item">
-            <div class="blog__item__pic">
-              <img src="img/blog/xblog-2.jpg.pagespeed.ic.BEPbl29gdJ.jpg" alt="" data-pagespeed-url-hash="416000997"
-                onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-            </div>
-            <div class="blog__item__text">
-              <ul>
-                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                <li><i class="fa fa-comment-o"></i> 5</li>
-              </ul>
-              <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-              <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <div class="blog__item">
-            <div class="blog__item__pic">
-              <img src="img/blog/xblog-3.jpg.pagespeed.ic.cmlGgG7W6t.jpg" alt="" data-pagespeed-url-hash="710500918"
-                onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-            </div>
-            <div class="blog__item__text">
-              <ul>
-                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                <li><i class="fa fa-comment-o"></i> 5</li>
-              </ul>
-              <h5><a href="#">Visit the clean farm in the US</a></h5>
-              <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </section> -->
 
 
   <footer class="footer spad">
